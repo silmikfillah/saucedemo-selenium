@@ -1,0 +1,15 @@
+standard_user,secret_sauce,success
+standard_user,secretsauce,incorrect account
+standard_user,,required password
+locked_out_user,secret_sauce,locked out account
+locked_out_user,secretsau,incorrect account
+locked_out_user,,required password
+problem_user,secret_sauce,success
+problem_user,secret_sa,incorrect account
+problem_user,,required password
+performance_glitch_user,secret_sauce,success
+performance_glitch_user,secretsau,incorrect account
+performance_glitch_user,,required password
+unregistered_name,secret_sauce,incorrect account
+,secret_sauce,required username
+,,required username
