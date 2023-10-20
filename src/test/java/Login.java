@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,9 @@ public class Login {
         driver.findElement(By.id("login-button")).click();
 
         driver.findElement(By.className("app_logo"));
-        driver.close();
+        String title_page = driver.findElement(By.xpath("//*[@id='header_container']/div[2]/span")).getText();
+        Assert.assertEquals(title_page, "Products");
+
+        driver.quit();
     }
 }
