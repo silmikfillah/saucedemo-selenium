@@ -3,9 +3,6 @@ package Pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 
 public class PageLogin {
     WebDriver driver;
@@ -54,7 +51,7 @@ public class PageLogin {
             Assert.assertEquals(errormsg_4, "Epic sadface: Sorry, this user has been locked out.");
         }
     }
-    public void login_saucedemo(String username, String password, String status) {
+    public void login_saucedemo_success(String username, String password, String status) {
         this.setUsername(username);
         this.setPassword(password);
         this.clickLoginButton();
