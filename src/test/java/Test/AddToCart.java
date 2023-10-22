@@ -1,6 +1,7 @@
 package Test;
 
 import Pages.Homepage;
+import Pages.PageCart;
 import Pages.PageLogin;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -16,7 +17,7 @@ public class AddToCart {
     WebDriver driver;
     PageLogin pageLogin;
     Homepage homepage;
-    Login login;
+    PageCart pageCart;
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
@@ -29,6 +30,8 @@ public class AddToCart {
     public void test_AddToCart() {
         pageLogin = new PageLogin(driver);
         homepage = new Homepage(driver);
+        pageCart = new PageCart(driver);
+
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("https://saucedemo.com/");
@@ -39,7 +42,7 @@ public class AddToCart {
         homepage.clickAddToCart();
         homepage.verifySuccessAddToCart();
         homepage.getCart();
-        homepage.verifyProduct_inCart();
+        pageCart.verifyProduct_inCart();
     }
 
     @After

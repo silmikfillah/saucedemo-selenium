@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Homepage {
     WebDriver driver;
+    PageCart pageCart;
     public Homepage(WebDriver driver) {
         this.driver = driver;
     }
@@ -32,7 +33,6 @@ public class Homepage {
     By fourth_AddToCart_btn = By.id("add-to-cart-sauce-labs-fleece-jacket");
     By fifth_AddToCart_btn = By.id("add-to-cart-sauce-labs-onesie");
     By sixth_AddToCart_btn = By.id("add-to-cart-test.allthethings()-t-shirt-(red)");
-    By first_card_product = By.xpath("//*[@id='cart_contents_container']/div/div[1]/div[3]");
     List<WebElement> givenList;
     public void getRandomProducts() {
         givenList = new ArrayList<>();
@@ -63,17 +63,19 @@ public class Homepage {
     public void getCart() {
         driver.findElement(cart_button).click();
     }
-    public boolean isElementVisible(By by) {
-        try {
-            driver.findElement(by);
-            return true;
+    public void addToCart_success() {
+        pageCart = new PageCart(driver);
 
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            return false;
-        }
+        this.clickAddToCart();
+        this.verifySuccessAddToCart();
+        this.getCart();
+        pageCart.verifyProduct_inCart();
     }
-    public void verifyProduct_inCart() {
-        Assert.assertTrue(isElementVisible(first_card_product));
-        System.out.println("Element is visible");
+    public void addToCart_refresh() {
+        pageCart = new PageCart(driver);
+
+        this.getCart();
+        pageCart.verifyProduct_inCart();
     }
+
 }

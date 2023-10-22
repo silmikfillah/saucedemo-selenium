@@ -1,6 +1,7 @@
 package Cucumber.stepDef;
 
 import Pages.Homepage;
+import Pages.PageCart;
 import Pages.PageLogin;
 import io.cucumber.java.Before;
 import io.cucumber.java.bs.A;
@@ -19,6 +20,7 @@ public class AddToCart {
     WebDriver driver;
     PageLogin pageLogin;
     Homepage homepage;
+    PageCart pageCart;
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
@@ -47,16 +49,17 @@ public class AddToCart {
         homepage.getRandomProducts();
     }
 
-    @A("I click the Add To Cart button")
+    @And("I click the Add To Cart button")
     public void i_click_the_add_to_cart_button() {
         homepage.clickAddToCart();
     }
 
     @Then("The product will be added to cart")
     public void the_product_will_be_added_to_cart() {
+        pageCart = new PageCart(driver);
         homepage.verifySuccessAddToCart();
         homepage.getCart();
-        homepage.verifyProduct_inCart();
+        pageCart.verifyProduct_inCart();
         driver.quit();
     }
 
