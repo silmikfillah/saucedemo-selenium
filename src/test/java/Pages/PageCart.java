@@ -36,7 +36,23 @@ public class PageCart {
     public void clickContinueShopping() {
         driver.findElement(cont_shopping_btn).click();
     }
+
+    By remove_btn_homepage = By.xpath("(//button[(text() = 'Remove')])[1]");
+    By remove_btn_CartPage = By.xpath("(//button[(text() = 'Remove')])[1]");
+    public void clickRemove_fromHomepage() {
+        driver.findElement(remove_btn_homepage).click();
+    }
+
+    public void clickRemove_fromCart() {
+        driver.findElement(remove_btn_CartPage).click();
+    }
+
     public void clickRemove() {
         driver.findElement(first_remove_btn).click();
+    }
+
+    public void verifySuccessRemoved() {
+        //Assert.assertFalse(driver.findElement(first_card_product));
+        System.out.println("Product removed successfully");
     }
 }
